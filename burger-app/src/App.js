@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
+import BurgerBuilder from './Containers/BurgerBuilder/BurgerBuilder'
+import Layout from './Components/Layout/Layout';
 
 class App extends Component {
-  constructor(props) {
-    super()
-    this.state = {
-
-    }
-  }
-
-    render() {
+  render() {
       return (
         <div>
-          <h1>testing 123</h1>
+          <Layout>
+            <BurgerBuilder />
+          </Layout>
         </div>
       );
     }

@@ -6,7 +6,7 @@ const layout = (props) => (
   <Aux>
     <div>Toolbar, sideDrawer, backDrop</div>
     <main>
-      [props.children]
+      {props.children}
     </main>
   </Aux>
 );
