@@ -4,8 +4,8 @@ import BuildControl from './BuildControl/BuildControl'
 
 const controls = [
   {label: 'Lettuce', type: 'lettuce'},
-  {label: 'Bacon_', type: 'bacon'},
-  {label: 'Meat__', type: 'meat'},
+  {label: 'Bacon', type: 'bacon'},
+  {label: 'Meat', type: 'meat'},
   {label: 'Cheese', type: 'cheese'},
 
 ];
@@ -13,7 +13,12 @@ const controls = [
 const buildControls = (props) => (
     <div className={classes.BuildControls}>
       {controls.map(ctrl => (
-      <BuildControl key={ctrl.label} label={ctrl.label} />
+      <BuildControl
+        key={ctrl.label}
+        label={ctrl.label}
+        type={ctrl.type}
+        added={() => props.ingredientAdded(ctrl.type)}
+        calories={() => props.caloriesAdded(ctrl.type)}/>
       ))}
     </div>
 );
