@@ -12,16 +12,15 @@ const controls = [
 
 const buildControls = (props) => (
     <div className={classes.BuildControls}>
-      <p>Total Price: $ {props.price.toFixed()}</p>
-      <p>Total Calories: {props.calories}</p>
+    <p>Total Price: $ {props.price.toFixed()}</p>
+    <p>Total Calories: {props.calories}</p>
       {controls.map(ctrl => (
       <BuildControl
         key={ctrl.label}
         label={ctrl.label}
         type={ctrl.type}
         added={() => props.ingredientAdded(ctrl.type)}
-        removed={()=> props.ingredientRemoved(ctrl.type)}
-        calories={() => props.caloriesAdded(ctrl.type)} />
+        removed={()=> props.ingredientRemoved(ctrl.type)} />
       ))}
     </div>
 );

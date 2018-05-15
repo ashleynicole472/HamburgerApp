@@ -11,10 +11,10 @@ const INGREDIENT_PRICES =  {
 }
 
 const INGREDIENT_CALORIES = {
-  lettuce: 5,
-  meat: 420,
-  bacon: 43,
-  cheese: 113
+  lettuce: 5.0,
+  meat: 420.0,
+  bacon: 43.0,
+  cheese: 113.0
 }
 
 class BurgerBuilder extends Component {
@@ -43,19 +43,17 @@ class BurgerBuilder extends Component {
       let oldPrice = this.state.totalPrice;
       const newPrice = this.state.totalPrice + priceAddition;
       this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
-  }
 
-  addCaloriesHandler = (type) => {
-    const oldCalories = this.state.ingredients[type];
-    let updatedCount = oldCalories + 1;
-    const updatedCalories = {
-      ...this.state.ingredients
-    };
-    this.updatedCalories[type] = updatedCount;
-    const caloriesAddition = INGREDIENT_CALORIES[type];
-    let oldCals = this.state.totalCal;
-    const newCals = this.state.totalCal + caloriesAddition;
-    this.setState({totalCal: newCals, ingredients: updatedCalories});
+      const oldCalories = this.state.ingredients[type];
+      let updatedCals= oldCalories + 1;
+      const updatedCalories = {
+        ...this.state.ingredients
+      };
+      updatedCalories[type] = updatedCals;
+      const caloriesAddition = INGREDIENT_CALORIES[type];
+      let oldCals = this.state.totalCal;
+      const newCals = this.state.totalCal + caloriesAddition;
+      this.setState({totalCal: newCals, ingredients: updatedCalories});
   }
 
   removeIngredientHandler = (type) => {
@@ -90,5 +88,5 @@ class BurgerBuilder extends Component {
     );
   }
 }
-
+// calories={() => props.caloriesAdded(ctrl.type)}
 export default BurgerBuilder
