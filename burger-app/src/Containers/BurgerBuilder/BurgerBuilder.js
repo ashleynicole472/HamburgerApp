@@ -40,27 +40,29 @@ class BurgerBuilder extends Component {
       };
       updatedIngredients[type] = updatedCount;
       const priceAddition = INGREDIENT_PRICES[type];
-      const oldPrice = this.state.totalPrice;
-      const newPrice = this.state.oldprice + priceAddition;
+      let oldPrice = this.state.totalPrice;
+      const newPrice = this.state.totalPrice + priceAddition;
       this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
-      console.log(this.state.totalPrice);
   }
 
   addCaloriesHandler = (type) => {
-    const currentCalories = this.state.ingredients[type];
-    const updatedCals = currentCalories + 1;
+    const oldCalories = this.state.ingredients[type];
+    let updatedCount = oldCalories + 1;
     const updatedCalories = {
       ...this.state.ingredients
     };
-    updatedCalories[type] = updatedCals;
+    this.updatedCalories[type] = updatedCount;
     const caloriesAddition = INGREDIENT_CALORIES[type];
-    const oldCals = this.state.totalCal;
-    const newCals = oldCals + caloriesAddition;
-    this.setState({totalCal: newCals, ingredients: updatedCalories})
+    let oldCals = this.state.totalCal;
+    const newCals = this.state.totalCal + caloriesAddition;
+    this.setState({totalCal: newCals, ingredients: updatedCalories});
   }
 
   removeIngredientHandler = (type) => {
     const oldCount = this.state.ingredients[type];
+    if(oldCount <= 0){
+      return;
+    }
     const updatedCount = oldCount-1;
     const updatedIngredients = {
       ...this.state.ingredients
@@ -74,14 +76,16 @@ class BurgerBuilder extends Component {
   }
 
   render(){
-
     return(
       <Aux>
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
           ingredientAdded={this.addIngredientHandler}
+          caloriesAdded={this.addCaloriesHandler}
           ingredientRemoved={this.removeIngredientHandler}
-          caloriesAdded={this.addCaloriesHandler} />
+          price={this.state.totalPrice}
+          calories={this.state.totalCal}
+          />
       </Aux>
     );
   }

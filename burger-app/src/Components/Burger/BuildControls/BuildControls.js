@@ -12,6 +12,8 @@ const controls = [
 
 const buildControls = (props) => (
     <div className={classes.BuildControls}>
+      <p>Total Price: $ {props.price.toFixed()}</p>
+      <p>Total Calories: {props.calories}</p>
       {controls.map(ctrl => (
       <BuildControl
         key={ctrl.label}
@@ -19,7 +21,7 @@ const buildControls = (props) => (
         type={ctrl.type}
         added={() => props.ingredientAdded(ctrl.type)}
         removed={()=> props.ingredientRemoved(ctrl.type)}
-        calories={() => props.caloriesAdded(ctrl.type)}/>
+        calories={() => props.caloriesAdded(ctrl.type)} />
       ))}
     </div>
 );

@@ -11,6 +11,7 @@
 
 .BuildControl button {
     display: block;
+    border-radius: 8px;
     font: inherit;
     padding: 5px;
     margin: 0 5px;
@@ -22,6 +23,7 @@
 
 .BuildControl button:disabled {
     background-color: #AC9980;
+    border-radius: 8px;
     border: 1px solid #7E7365;
     color: #ccc;
     cursor: default;
@@ -29,6 +31,7 @@
 
 .BuildControl button:hover:disabled {
     background-color: #AC9980;
+    border-radius: 8px;
     color: #ccc;
     cursor: not-allowed;
 }
