@@ -14,8 +14,7 @@ const buildControls = (props) => (
     <div className={classes.BuildControls}>
     <p className={classes.p}>Total Price: $ {props.price.toFixed()}</p>
     <p>Total Calories: {props.calories}</p>
-    <button className={classes.OrderButton}
-      disabled={!props.puchasable}>Place Order!</button>
+    <button className={classes.OrderButton}>Place Order!</button>
       {controls.map(ctrl => (
       <BuildControl
         key={ctrl.label}
