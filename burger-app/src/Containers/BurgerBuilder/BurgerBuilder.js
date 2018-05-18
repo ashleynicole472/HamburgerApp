@@ -31,22 +31,23 @@ class BurgerBuilder extends Component {
       },
       totalPrice: 3,
       totalCal: 120,
-      // puchasable: true
+      purchasing: false,
+      puchasable: false
     }
   }
 
-  // updatePurchaseStae = () => {
-  //   const ingredients = {
-  //     ...this.state.ingredients
-  //   };
-  //   const sum = Object.key(ingredients)
-  //     .map(igKey =>{
-  //       return ingredients[igKey];
-  //     }).reduce((sum, el) => {
-  //       return sum + el;
-  //     },0);
-  //     this.setState({puchasable: sum < 0})
-  // }
+  updatePurchaseStae = () => {
+    const ingredients = {
+      ...this.state.ingredients
+    };
+    const sum = Object.key(ingredients)
+      .map(igKey =>{
+        return ingredients[igKey];
+      }).reduce((sum, el) => {
+        return sum + el;
+      },0);
+      this.setState({puchasable: sum < 0})
+  }
 
   addIngredientHandler = (type) => {
       const oldCount = this.state.ingredients[type];
@@ -100,10 +101,18 @@ class BurgerBuilder extends Component {
     this.setState({totalCal: newCals, ingredients: updatedCalories});
   }
 
+  purchasedHandler = () => {
+    this.setState({purchasing: true});
+  }
+
+  purchasedCanceledHandler = () => {
+      this.setState({purchasing:false})
+  }
+
   render(){
     return(
       <Aux>
-        <Modal>
+        <Modal show={this.state.purchasing} modalClosed={this.purchasedCanceledHandler}>
           <OrderSummary ingredients={this.state.ingredients} />
         </Modal>
         <Burger ingredients={this.state.ingredients} />
@@ -114,10 +123,11 @@ class BurgerBuilder extends Component {
           price={this.state.totalPrice}
           calories={this.state.totalCal}
           puchasable={this.state.puchasable}
+          ordered={this.purchasedHandler}
           />
       </Aux>
     );
   }
 }
-// calories={() => props.caloriesAdded(ctrl.type)}
-export default BurgerBuilder
+
+export default BurgerBuilder;
