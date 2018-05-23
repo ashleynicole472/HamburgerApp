@@ -1,12 +1,8 @@
 .BuildControl {
-  width: auto;
-  background-color: #CF8F2E;
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 2px 1px #CCC;
-  margin: inherit;
-  padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
 }
 
 .BuildControl button {
@@ -21,9 +17,9 @@
     outline: none;
 }
 
+
 .BuildControl button:disabled {
     background-color: #AC9980;
-    border-radius: 8px;
     border: 1px solid #7E7365;
     color: #ccc;
     cursor: default;
@@ -31,7 +27,6 @@
 
 .BuildControl button:hover:disabled {
     background-color: #AC9980;
-    border-radius: 8px;
     color: #ccc;
     cursor: not-allowed;
 }
