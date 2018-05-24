@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Aux from '../../hoc/Aux';
 import classes from './Layout.css';
 import Toolbar from '../Navigation/Toolbar/Toolbar';
 import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 
-const layout = (props) => (
-  // Aux is created to allow this file to have a wrapping root element
-  <Aux>
-    <Toolbar />
-    <SideDrawer />
-    <main className={classes.content}>
-      {props.children}
-    </main>
-  </Aux>
-);
+class Layout extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            showSideDrawer: true
+        }
+    }
 
-export default layout;
+    showSideDrawerClosedHandler = () => {
+        this.setState({showSideDrawer: false})
+    }
+
+    render(){
+        return(
+            // Aux is created to allow this file to have a wrapping root element
+            <Aux>
+              <Toolbar />
+              <SideDrawer closed={this.showSideDrawerClosedHandler}/>
+              <main className={classes.content}>
+                {this.props.children}
+              </main>
+            </Aux>
+        );
+    }
+}
+
+export default Layout;
