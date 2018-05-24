@@ -1,13 +1,14 @@
 import React from 'react';
 import Aux from '../../hoc/Aux';
-import classes from './Layout.css'
+import classes from './Layout.css';
 import Toolbar from '../Navigation/Toolbar/Toolbar';
+import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 
 const layout = (props) => (
   // Aux is created to allow this file to have a wrapping root element
   <Aux>
-    <div> sideDrawer, backDrop</div>
     <Toolbar />
+    <SideDrawer />
     <main className={classes.content}>
       {props.children}
     </main>
