@@ -5,12 +5,9 @@ import Toolbar from '../Navigation/Toolbar/Toolbar';
 import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 
 class Layout extends Component {
-    constructor(props){
-        super(props);
-        this.state={
+        state = {
             showSideDrawer: true
         }
-    }
 
     showSideDrawerClosedHandler = () => {
         this.setState({showSideDrawer: false})
